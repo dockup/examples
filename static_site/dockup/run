@@ -1,0 +1,12 @@
+#!/bin/sh
+
+set -e -x
+
+if ! [[ -z "${BUILD_API_URL}" || -z "${DOCKUP_API_URL}" ]]; then
+  for f in $(ls /usr/share/nginx/html/*.js); do
+    sed -i -e "s $BUILD_API_URL $DOCKUP_API_URL g" $f;
+  done
+fi
+
+echo "NGINX"
+nginx -g "daemon off;"
