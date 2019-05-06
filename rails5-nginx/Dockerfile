@@ -1,4 +1,4 @@
-FROM ruby:2.6.0 as assets
+FROM ruby:2.5.1 as assets
 
 RUN curl -sL https://deb.nodesource.com/setup_11.x | bash - && \
     apt-get install -y nodejs
@@ -34,7 +34,7 @@ COPY run-nginx /app/run-nginx
 CMD /app/run-nginx
 
 # ===================================================================================
-FROM ruby:2.6.0 as app
+FROM ruby:2.5.1 as app
 
 RUN curl -sL https://deb.nodesource.com/setup_11.x | bash - && \
     apt-get install -y nodejs
@@ -52,4 +52,4 @@ COPY --from=assets /app/public public
 RUN bundle install --frozen --without development test --path=vendor
 
 EXPOSE 3000
-CMD bundle exec rails server
+CMD ./bin/dockup
