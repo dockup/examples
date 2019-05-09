@@ -1,0 +1,11 @@
+<h1>Headers received</h1>
+
+<table>
+  <tbody>
+    <%- headers.each do |k, v| %>
+      <tr>
+        <td><code><%= k %></code></td>
+        <td><code><%= v %></code></td>
+      </tr>
+    <% end %>
+</ul>
