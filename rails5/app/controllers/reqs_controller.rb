@@ -1,5 +1,5 @@
 class ReqsController < ApplicationController
   def show
-    render locals: { headers: headers }
+    render locals: { headers: request.env.to_h }
   end
 end
